@@ -1,0 +1,54 @@
+﻿<div class="modal-dialog">
+    <div class="col-xs-9">
+        <div class="modal-content">
+            <div class="modal-header" style="background-color: #7AC0DA;">
+                <div>
+                    <a href="#">
+                        <img src="css/images/Diaspark_Logo_large.png" alt="diaspark logo" class="pull-left" width="40%" height="40%">
+                    </a>
+                    <!--<h3 align="right" class="headerText">Employee Certification App</h3>-->
+                </div>
+
+            </div>
+            <div class="modal-body" style="padding-top:0">
+                <form novalidate name="loginForm" ng-submit="onLogin()">
+                    <h4 align="center">Employee Certification App</h4>
+                    <div data-ng-show="message" class="alert alert-danger">
+                        {{ message }}
+                    </div>
+                    <div class="row">
+                        <!--<div class="col-xs-12">-->
+                        <div class="form-group">
+                            <br />
+                            <label>
+                                Login Name
+                                <red-span>*</red-span>
+                            </label>
+                            <input type="text" name="loginName" id="loginName" ng-model="userDetail.loginName" required class="form-control" ng-class="{error : loginForm.loginName.$invalid && loginForm.$submitted }" />
+                        </div>
+                        <!--</div>-->
+                    </div>
+                    <div class="row">
+                        <!--<div class="col-xs-8">-->
+                        <div class="form-group">
+                            <label>
+                                Password
+                                <red-span>*</red-span>
+                            </label>
+                            <input type="password" name="password" id="password" ng-model="userDetail.password" required class="form-control" ng-class="{error : loginForm.password.$invalid && loginForm.$submitted }" />
+                        </div>
+                        <!--</div>-->
+                    </div>
+                    <div class="row">
+                        <!--  <div class="col-xs-8">-->
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Login" />
+                            <input type="button" class="btn btn-link" value="not registerd yet? Signup" data-ng-click="onRegister();" />
+                        </div>
+                        <!--</div>-->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

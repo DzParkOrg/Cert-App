@@ -1,0 +1,121 @@
+﻿<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" data-ng-click="closePopUp()">&times;</button>
+    <h4 class="modal-title">Certification Approval Details</h4>
+</div>
+
+<div class="modal-body">
+   
+        <form name="CertificationDetailsForm" role="form" class="form-horizontal" novalidate>
+            <div data-ng-show="message" class="alert alert-danger topPadding">
+                {{ message }}
+            </div>
+            <div class="col col-xs-12">
+                <table>
+                    <tr class="form-group">
+                        <td>
+                            <label>Request Id</label>
+                        </td>
+                        <td>
+                          {{request.RequestId}}  
+
+                        </td>
+                    </tr>
+                    <tr class="form-group">
+                        <td>
+                            <label>Request Date </label>
+                        </td>
+                        <td>
+                            {{request.RequestDate | date:'MM/dd/yyyy'}}
+                        </td>
+                    </tr>
+
+                    <tr class="form-group">
+                        <td>
+                            <label>Name</label>
+                        </td>
+
+                        <td>
+                            {{request.name}}
+
+                        </td>
+                    </tr>
+
+                    <tr class="form-group">
+                        <td>
+                            <label>Technology</label>
+                        </td>
+
+                        <td>
+                            {{request.CertificationCategoryTitle}}
+
+                        </td>
+                    </tr>
+
+                    <tr class="form-group">
+                        <td>
+                            <label>Certification details </label>
+                        </td>
+
+                        <td>
+                            {{request.certificationDetails}}
+
+                        </td>
+                    </tr>
+
+                    <tr class="form-group">
+                        <td>
+                            <label>Estimated cost</label>
+                        </td>
+
+                        <td>
+                            {{request.amount | currency}}
+
+                        </td>
+                    </tr>
+
+                    <tr class="form-group">
+                        <td>
+                            <label>IRA</label>
+                        </td>
+
+                        <td>
+                            {{request.IRA}}
+                        </td>
+                    </tr>
+
+                    <tr class="form-group">
+                        <td>
+                            <label>Remarks </label>
+                        </td>
+                        <td>
+                            <textarea rows="2" cols="40" data-ng-model="request.ApproverRemarks" required name="approverRemarks"
+                                      data-ng-class="{error: CertificationDetailsForm.approverRemarks.$invalid && CertificationDetailsForm.$submitted}"></textarea>
+                        </td>
+                    </tr>
+
+                </table>
+            </div>
+            <div class="col col-xs-12">
+                <div class="form-group">
+                    <label>Action </label>
+                    <span style=" padding-left:18%">
+                        <input type="radio" name="action" value="Approve" data-ng-model="request.Status" required > <span style="font-weight:bold"
+                          data-ng-class="{error: CertificationDetailsForm.action.$invalid && CertificationDetailsForm.$submitted}">
+                        Approve
+                    </span>
+                        &nbsp;
+                        <input type="radio" name="action" value="Reject" data-ng-model="request.Status" required><span style="font-weight:bold"
+                            data-ng-class="{error: CertificationDetailsForm.action.$invalid && CertificationDetailsForm.$submitted}">Reject</span>
+                    </span>
+                </div>
+            </div>
+                    <div class="form-group" style="padding-left : 5%">
+                        <input type="button" class="btn btn-primary" value="Submit" data-ng-click="onSubmit()" />
+                        <input type="button" class="btn btn-warning" value="Cancel" data-ng-click="onCancel();" />
+
+                    </div>
+               
+            
+</form>
+   
+</div>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="trackerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tracker.dbo.CertificationCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="CertificationCategories">
+    <Key>
+      <PropertyRef Name="CertificationCategoryId" />
+      <PropertyRef Name="CertificationCategoryTitle" />
+      <PropertyRef Name="ParentCategoryId" />
+      <PropertyRef Name="CreatedByUserId" />
+      <PropertyRef Name="CreationTS" />
+      <PropertyRef Name="LastModdifiedbyUserId" />
+      <PropertyRef Name="LastModdifiedTS" />
+    </Key>
+    <Property Name="CertificationCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CertificationCategoryTitle" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="ParentCategoryId" Type="int" Nullable="false" />
+    <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+    <Property Name="CreationTS" Type="datetime" Nullable="false" />
+    <Property Name="LastModdifiedbyUserId" Type="int" Nullable="false" />
+    <Property Name="LastModdifiedTS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CertificationRequests">
+    <Key>
+      <PropertyRef Name="RequestId" />
+    </Key>
+    <Property Name="RequestDate" Type="datetime" Nullable="false" />
+    <Property Name="RequestByUserId" Type="int" Nullable="false" />
+    <Property Name="RequestForCertificationId" Type="int" Nullable="false" />
+    <Property Name="Remarks" Type="varchar(max)" Nullable="false" />
+    <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+    <Property Name="CreationTS" Type="datetime" Nullable="false" />
+    <Property Name="LastModdifiedbyUserId" Type="int" Nullable="false" />
+    <Property Name="LastModdifiedTS" Type="datetime" Nullable="false" />
+    <Property Name="amount" Type="int" />
+    <Property Name="IRA" Type="varchar" MaxLength="200" />
+    <Property Name="quarter" Type="varchar" MaxLength="100" />
+    <Property Name="CertificationCategory" Type="int" />
+    <Property Name="RequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ApproverRemarks" Type="varchar(max)" />
+    <Property Name="Status" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Certifications">
+    <Key>
+      <PropertyRef Name="CertificationId" />
+    </Key>
+    <Property Name="CertificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CertificationCode" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="CertificationTitle" Type="varchar(max)" Nullable="false" />
+    <Property Name="Description" Type="varchar(max)" Nullable="false" />
+    <Property Name="CertificationCategoryId" Type="int" Nullable="false" />
+    <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+    <Property Name="CreationTS" Type="datetime" Nullable="false" />
+    <Property Name="LastModdifiedbyUserId" Type="int" Nullable="false" />
+    <Property Name="LastModdifiedTS" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'tracker.dbo.Designations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="Designations">
+    <Key>
+      <PropertyRef Name="DesignationID" />
+      <PropertyRef Name="DesignationTitle" />
+      <PropertyRef Name="CreatedByUserId" />
+      <PropertyRef Name="CreationTimeStamp" />
+      <PropertyRef Name="LastModdifiedbyUserId" />
+      <PropertyRef Name="LastModdifiedTimeStamp" />
+    </Key>
+    <Property Name="DesignationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DesignationTitle" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+    <Property Name="CreationTimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="LastModdifiedbyUserId" Type="int" Nullable="false" />
+    <Property Name="LastModdifiedTimeStamp" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Employees">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EmployeeCode" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="DesignationId" Type="int" Nullable="false" />
+    <Property Name="CertificationCategoryId" Type="int" Nullable="false" />
+    <Property Name="EmployeeBand" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="EMailId" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="MobileNo" Type="varchar" MaxLength="100" />
+    <Property Name="ProfilePhoto" Type="image" />
+    <Property Name="IsApprover" Type="bit" />
+    <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+    <Property Name="CreationTimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="LastModifiedbyUserId" Type="int" Nullable="false" />
+    <Property Name="LastModifiedTimeStamp" Type="datetime" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" />
+  </EntityType>
+  <EntityType Name="UserDetails">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginName" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="EmployeeId" Type="int" Nullable="false" />
+    <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+    <Property Name="CreationTS" Type="datetime" Nullable="false" />
+    <Property Name="LastModdifiedbyUserId" Type="int" Nullable="false" />
+    <Property Name="LastModdifiedTS" Type="datetime" Nullable="false" />
+    <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="trackerModelStoreContainer">
+    <EntitySet Name="CertificationRequests" EntityType="Self.CertificationRequests" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Certifications" EntityType="Self.Certifications" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CertificationCategories" EntityType="Self.CertificationCategories" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [CertificationCategories].[CertificationCategoryId] AS [CertificationCategoryId], 
+    [CertificationCategories].[CertificationCategoryTitle] AS [CertificationCategoryTitle], 
+    [CertificationCategories].[ParentCategoryId] AS [ParentCategoryId], 
+    [CertificationCategories].[CreatedByUserId] AS [CreatedByUserId], 
+    [CertificationCategories].[CreationTS] AS [CreationTS], 
+    [CertificationCategories].[LastModdifiedbyUserId] AS [LastModdifiedbyUserId], 
+    [CertificationCategories].[LastModdifiedTS] AS [LastModdifiedTS]
+    FROM [dbo].[CertificationCategories] AS [CertificationCategories]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="Designations" EntityType="Self.Designations" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Designations].[DesignationID] AS [DesignationID], 
+    [Designations].[DesignationTitle] AS [DesignationTitle], 
+    [Designations].[CreatedByUserId] AS [CreatedByUserId], 
+    [Designations].[CreationTimeStamp] AS [CreationTimeStamp], 
+    [Designations].[LastModdifiedbyUserId] AS [LastModdifiedbyUserId], 
+    [Designations].[LastModdifiedTimeStamp] AS [LastModdifiedTimeStamp]
+    FROM [dbo].[Designations] AS [Designations]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

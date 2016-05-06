@@ -1,0 +1,29 @@
+﻿<nav-menu>
+</nav-menu>
+<div class="panel panel-default">
+
+
+    <div class="panel-body" >
+        <div style="border:solid 1px darkgrey;">
+            <div data-ng-repeat="item in certificateList">
+                <input type="button" class="btn btn-link heading" value="{{item.CertificationCode}}-{{item.CertificationTitle}}"
+                       data-ng-click="nominate($index)" />
+                <div class="row form-group">
+                    {{item.Description}}
+                </div>
+            </div>
+            <div class="alert alert-info" data-ng-show="certificateList.length === 0">
+                <strong>Info!</strong> No certifications available against your skills. 
+            </div>
+        </div>
+    
+    </div>
+    <div class="panel-footer">
+        <span style="color: white">© Copyright 2015. Diaspark Infotech Pvt. Ltd.</span>
+    </div>
+</div>
+          
+        
+
+
+

@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="trackerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Designation">
+    <Key>
+      <PropertyRef Name="DesignationID" />
+      <PropertyRef Name="DesignationTitle" />
+      <PropertyRef Name="CreatedByUserId" />
+      <PropertyRef Name="CreationTimeStamp" />
+      <PropertyRef Name="LastModdifiedbyUserId" />
+      <PropertyRef Name="LastModdifiedTimeStamp" />
+    </Key>
+    <Property Name="DesignationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DesignationTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreationTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModdifiedbyUserId" Type="Int32" Nullable="false" />
+    <Property Name="LastModdifiedTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="trackerEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Designations" EntityType="Self.Designation" />
+    <EntitySet Name="CertificationCategories" EntityType="trackerModel.CertificationCategory" />
+    <EntitySet Name="Certifications" EntityType="trackerModel.Certification" />
+    <EntitySet Name="Employees" EntityType="trackerModel.Employee" />
+    <EntitySet Name="UserDetails" EntityType="trackerModel.UserDetail" />
+    <EntitySet Name="CertificationRequests" EntityType="trackerModel.CertificationRequest" />
+  </EntityContainer>
+  <EntityType Name="CertificationCategory">
+    <Key>
+      <PropertyRef Name="CertificationCategoryId" />
+      <PropertyRef Name="CertificationCategoryTitle" />
+      <PropertyRef Name="ParentCategoryId" />
+      <PropertyRef Name="CreatedByUserId" />
+      <PropertyRef Name="CreationTS" />
+      <PropertyRef Name="LastModdifiedbyUserId" />
+      <PropertyRef Name="LastModdifiedTS" />
+    </Key>
+    <Property Name="CertificationCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CertificationCategoryTitle" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="ParentCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreationTS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModdifiedbyUserId" Type="Int32" Nullable="false" />
+    <Property Name="LastModdifiedTS" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Certification">
+    <Key>
+      <PropertyRef Name="CertificationId" />
+    </Key>
+    <Property Name="CertificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CertificationCode" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="CertificationTitle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CertificationCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreationTS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModdifiedbyUserId" Type="Int32" Nullable="false" />
+    <Property Name="LastModdifiedTS" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="EmployeeID" />
+    </Key>
+    <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DesignationId" Type="Int32" Nullable="false" />
+    <Property Name="CertificationCategoryId" Type="Int32" Nullable="false" />
+    <Property Name="EmployeeBand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EMailId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="ProfilePhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="IsApprover" Type="Boolean" />
+    <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreationTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModifiedbyUserId" Type="Int32" Nullable="false" />
+    <Property Name="LastModifiedTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsAdmin" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="UserDetail">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="LoginName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+    <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreationTS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModdifiedbyUserId" Type="Int32" Nullable="false" />
+    <Property Name="LastModdifiedTS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityType Name="CertificationRequest">
+    <Key>
+      <PropertyRef Name="RequestId" />
+    </Key>
+    <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="RequestByUserId" Type="Int32" Nullable="false" />
+    <Property Name="RequestForCertificationId" Type="Int32" Nullable="false" />
+    <Property Name="Remarks" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+    <Property Name="CreationTS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="LastModdifiedbyUserId" Type="Int32" Nullable="false" />
+    <Property Name="LastModdifiedTS" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="amount" Type="Int32" />
+    <Property Name="IRA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="quarter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CertificationCategory" Type="Int32" />
+    <Property Name="RequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ApproverRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+</Schema>

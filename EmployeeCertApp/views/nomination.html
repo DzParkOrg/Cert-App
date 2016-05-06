@@ -1,0 +1,104 @@
+﻿<nav-menu>
+</nav-menu>
+<div class="panel panel-default">
+    <div class="panel-body" style="overflow:auto;">
+        <!--<div style="border: solid 2px darkgrey">-->
+        <form novalidate name="nominationForm">
+            <div data-ng-show="message" class="alert alert-danger topPadding">
+                {{ message }}
+            </div>
+            <div class="alert alert-success" data-ng-show="successMsg">
+                <strong>Success!</strong> {{successMsg}}
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="form-group">
+                        <label>Certification Categories</label>
+                        <select data-ng-model="request.certificationCategory" name="certificationCategory"
+                                data-ng-change=getCertificationListPerSkills(); required
+                                ng-class="{error : nominationForm.certificationCategory.$invalid && nominationForm.$submitted }"
+                                ng-options="item.CertificationCategoryId as item.CertificationCategoryTitle for item in certificationCategoryList" class="form-control">
+                            <option value="">--select--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="form-group">
+                        <label>Certification Details</label>
+                        <select data-ng-model="request.RequestForCertificationId" name="certification"
+                                ng-options="item.CertificationId as item.CertificationCode + '- ' + item.CertificationTitle for item in certificationList"
+                                ng-class="{error :  nominationForm.certification.$invalid && nominationForm.$submitted  }"
+                                class="form-control" required>
+                            <option value="">--select--</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="form-group">
+                        <label>Estimated Cost($)</label>
+                        <input type="number" data-ng-model="request.amount" name="cost" class="form-control" required
+                               ng-class="{error :  nominationForm.cost.$invalid && nominationForm.$submitted  }" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="form-group">
+                        <label>Quarter</label>
+                        <select data-ng-model="request.quarter" name="quarter" class="form-control" required
+                                ng-class="{error : nominationForm.quarter.$invalid && nominationForm.$submitted  }">
+                            <option value="">--select--</option>
+                            <option value="quarter 1">quarter 1</option>
+                            <option value="quarter 2">quarter 2</option>
+                            <option value="quarter 3">quarter 3</option>
+                            <option value="quarter 4">quarter 4</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="form-group">
+                        <label>IRA</label>
+                        <select data-ng-model="request.IRA" name="IRAName" class="form-control" required
+                                ng-class="{error :  nominationForm.IRAName.$invalid && nominationForm.$submitted  }">
+                            <option value="">--select--</option>
+                            <option value="Ali Asgar">Ali Asgar</option>
+                            <option value="Pankaj Gupta">Pankaj Gupta</option>
+                            <option value="Paresh Goyal">Paresh Goyal</option>
+                            <option value="Nupur Pathak">Nupur Pathak</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="form-group">
+                        <label>Remarks</label>
+                        <input type="text" data-ng-model="request.remarks" name="remarks" class="form-control" required
+                               ng-class="{error :  nominationForm.remarks.$invalid && nominationForm.$submitted  }" />
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                    <div class="form-group">
+
+                        <input type="submit" class="btn btn-primary" value="Nominate" data-ng-click="onNominate()" />
+                        <input type="button" class="btn btn-warning" value="Cancel" data-ng-click="onCancel();" />
+
+                    </div>
+                    </div>
+                </div>
+        </form>
+
+         <!--</div>-->
+     </div>
+    <div class="panel-footer">
+        <span style="color: white">© Copyright 2015. Diaspark Infotech Pvt. Ltd.</span>
+    </div>
+</div>

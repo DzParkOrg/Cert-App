@@ -1,0 +1,70 @@
+﻿<nav-menu>
+</nav-menu>
+<div class="panel panel-default">
+    <div class="panel-body" style="overflow:auto;">
+        <!--<div style="border: solid 2px darkgrey">-->
+            <form novalidate name="approvalForm">
+                <table class="table table-bordered table-hover">
+                    <thead style="background-color: darkorange; color : white">
+                        <tr>
+                            <th data-ng-click="getSortOrder('RequestId');">Request Id <div data-ng-class="getSortClass('RequestId')"</th>
+                            <th data-ng-click="getSortOrder('RequestDate');">Requested Date <div data-ng-class="getSortClass('RequestDate')"</th>
+                            <th data-ng-click="getSortOrder('name');">Name <div data-ng-class="getSortClass('name')"</th>
+                            <th data-ng-click="getSortOrder('CertificationCategoryTitle');">Technology <div data-ng-class="getSortClass('CertificationCategoryTitle')"</th>
+                            <th data-ng-click="getSortOrder('certificationDetails');">Certification Details <div data-ng-class="getSortClass('certificationDetails')"</th>
+                            <th data-ng-click="getSortOrder('Status');">Status <div data-ng-class="getSortClass('Status')"</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                       
+                        <!--<tr data-ng-repeat="data in approvalList | orderBy : sortColumn : reverseSort" ng-class="{green : data.Status === 'Approve',red : data.Status === 'Reject'}">-->
+                        <tr dir-paginate="data in approvalList | orderBy : sortColumn : reverseSort | itemsPerPage:6" ng-class="{green : data.Status === 'Approve',red : data.Status === 'Reject'}">
+                            <td>
+                                <button class="btn btn-link" data-ng-click="openPopUp($index)">{{data.RequestId}}</button>
+                            </td>
+                            <td>
+                                {{data.RequestDate | date:'MM/dd/yyyy'}}
+                            </td>
+                            <td>
+                                {{data.name}}
+                            </td>
+                            <td>
+                                {{data.CertificationCategoryTitle}}
+                            </td>
+                            <td>
+                                {{data.certificationDetails}}
+                            </td>
+                            <td>
+                                {{data.Status}}
+                            </td>
+                            <div class="alert alert-info" data-ng-show="approvalList.length === 0">
+                                <strong>Info!</strong> No certifications available against your skills.
+                            </div>
+                        </tr>
+                     
+                    </tbody>
+                </table>
+                <dir-pagination-controls max-size="6"
+                                         direction-links="true"
+                                         boundary-links="true">
+                </dir-pagination-controls>
+            </form>
+        <!--</div>-->
+    </div>
+    <div class="panel-footer">
+        <span style="color: white">© Copyright 2015. Diaspark Infotech Pvt. Ltd.</span>
+    </div>
+</div>
+
+
+<!--
+<td>
+    {{data.amount | currency}}
+</td>
+<td>
+    {{data.Remarks}}
+</td>
+<td>
+    <label class="radio-inline"><input type="radio" name="approve" data-ng-model="IsApprove" ng-checked="onCheck()" />Approve</label>
+    <label class="radio-inline"><input type="radio" name="approve" data-ng-model="IsRejected" ng-checked="onCheck()" />Reject</label>
+</td>-->

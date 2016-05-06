@@ -1,0 +1,384 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="trackerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'tracker.dbo.CertificationCategories' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="CertificationCategories">
+          <Key>
+            <PropertyRef Name="CertificationCategoryId" />
+            <PropertyRef Name="CertificationCategoryTitle" />
+            <PropertyRef Name="ParentCategoryId" />
+            <PropertyRef Name="CreatedByUserId" />
+            <PropertyRef Name="CreationTS" />
+            <PropertyRef Name="LastModdifiedbyUserId" />
+            <PropertyRef Name="LastModdifiedTS" />
+          </Key>
+          <Property Name="CertificationCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CertificationCategoryTitle" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ParentCategoryId" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreationTS" Type="datetime" Nullable="false" />
+          <Property Name="LastModdifiedbyUserId" Type="int" Nullable="false" />
+          <Property Name="LastModdifiedTS" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="CertificationRequests">
+          <Key>
+            <PropertyRef Name="RequestId" />
+          </Key>
+          <Property Name="RequestDate" Type="datetime" Nullable="false" />
+          <Property Name="RequestByUserId" Type="int" Nullable="false" />
+          <Property Name="RequestForCertificationId" Type="int" Nullable="false" />
+          <Property Name="Remarks" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreationTS" Type="datetime" Nullable="false" />
+          <Property Name="LastModdifiedbyUserId" Type="int" Nullable="false" />
+          <Property Name="LastModdifiedTS" Type="datetime" Nullable="false" />
+          <Property Name="amount" Type="int" />
+          <Property Name="IRA" Type="varchar" MaxLength="200" />
+          <Property Name="quarter" Type="varchar" MaxLength="100" />
+          <Property Name="CertificationCategory" Type="int" />
+          <Property Name="RequestId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ApproverRemarks" Type="varchar(max)" />
+          <Property Name="Status" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Certifications">
+          <Key>
+            <PropertyRef Name="CertificationId" />
+          </Key>
+          <Property Name="CertificationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CertificationCode" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="CertificationTitle" Type="varchar(max)" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="CertificationCategoryId" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreationTS" Type="datetime" Nullable="false" />
+          <Property Name="LastModdifiedbyUserId" Type="int" Nullable="false" />
+          <Property Name="LastModdifiedTS" Type="datetime" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'tracker.dbo.Designations' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Designations">
+          <Key>
+            <PropertyRef Name="DesignationID" />
+            <PropertyRef Name="DesignationTitle" />
+            <PropertyRef Name="CreatedByUserId" />
+            <PropertyRef Name="CreationTimeStamp" />
+            <PropertyRef Name="LastModdifiedbyUserId" />
+            <PropertyRef Name="LastModdifiedTimeStamp" />
+          </Key>
+          <Property Name="DesignationID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DesignationTitle" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreationTimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="LastModdifiedbyUserId" Type="int" Nullable="false" />
+          <Property Name="LastModdifiedTimeStamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employees">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmployeeCode" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="MiddleName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="DesignationId" Type="int" Nullable="false" />
+          <Property Name="CertificationCategoryId" Type="int" Nullable="false" />
+          <Property Name="EmployeeBand" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMailId" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="100" />
+          <Property Name="ProfilePhoto" Type="image" />
+          <Property Name="IsApprover" Type="bit" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreationTimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="LastModifiedbyUserId" Type="int" Nullable="false" />
+          <Property Name="LastModifiedTimeStamp" Type="datetime" Nullable="false" />
+          <Property Name="IsAdmin" Type="bit" />
+        </EntityType>
+        <EntityType Name="UserDetails">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginName" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Password" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmployeeId" Type="int" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="int" Nullable="false" />
+          <Property Name="CreationTS" Type="datetime" Nullable="false" />
+          <Property Name="LastModdifiedbyUserId" Type="int" Nullable="false" />
+          <Property Name="LastModdifiedTS" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="trackerModelStoreContainer">
+          <EntitySet Name="CertificationRequests" EntityType="Self.CertificationRequests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Certifications" EntityType="Self.Certifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employees" EntityType="Self.Employees" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserDetails" EntityType="Self.UserDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CertificationCategories" EntityType="Self.CertificationCategories" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [CertificationCategories].[CertificationCategoryId] AS [CertificationCategoryId], 
+    [CertificationCategories].[CertificationCategoryTitle] AS [CertificationCategoryTitle], 
+    [CertificationCategories].[ParentCategoryId] AS [ParentCategoryId], 
+    [CertificationCategories].[CreatedByUserId] AS [CreatedByUserId], 
+    [CertificationCategories].[CreationTS] AS [CreationTS], 
+    [CertificationCategories].[LastModdifiedbyUserId] AS [LastModdifiedbyUserId], 
+    [CertificationCategories].[LastModdifiedTS] AS [LastModdifiedTS]
+    FROM [dbo].[CertificationCategories] AS [CertificationCategories]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Designations" EntityType="Self.Designations" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Designations].[DesignationID] AS [DesignationID], 
+    [Designations].[DesignationTitle] AS [DesignationTitle], 
+    [Designations].[CreatedByUserId] AS [CreatedByUserId], 
+    [Designations].[CreationTimeStamp] AS [CreationTimeStamp], 
+    [Designations].[LastModdifiedbyUserId] AS [LastModdifiedbyUserId], 
+    [Designations].[LastModdifiedTimeStamp] AS [LastModdifiedTimeStamp]
+    FROM [dbo].[Designations] AS [Designations]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="trackerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Designation">
+          <Key>
+            <PropertyRef Name="DesignationID" />
+            <PropertyRef Name="DesignationTitle" />
+            <PropertyRef Name="CreatedByUserId" />
+            <PropertyRef Name="CreationTimeStamp" />
+            <PropertyRef Name="LastModdifiedbyUserId" />
+            <PropertyRef Name="LastModdifiedTimeStamp" />
+          </Key>
+          <Property Name="DesignationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DesignationTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreationTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModdifiedbyUserId" Type="Int32" Nullable="false" />
+          <Property Name="LastModdifiedTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityContainer Name="trackerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Designations" EntityType="Self.Designation" />
+          <EntitySet Name="CertificationCategories" EntityType="trackerModel.CertificationCategory" />
+          <EntitySet Name="Certifications" EntityType="trackerModel.Certification" />
+          <EntitySet Name="Employees" EntityType="trackerModel.Employee" />
+          <EntitySet Name="UserDetails" EntityType="trackerModel.UserDetail" />
+          <EntitySet Name="CertificationRequests" EntityType="trackerModel.CertificationRequest" />
+        </EntityContainer>
+        <EntityType Name="CertificationCategory">
+          <Key>
+            <PropertyRef Name="CertificationCategoryId" />
+            <PropertyRef Name="CertificationCategoryTitle" />
+            <PropertyRef Name="ParentCategoryId" />
+            <PropertyRef Name="CreatedByUserId" />
+            <PropertyRef Name="CreationTS" />
+            <PropertyRef Name="LastModdifiedbyUserId" />
+            <PropertyRef Name="LastModdifiedTS" />
+          </Key>
+          <Property Name="CertificationCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CertificationCategoryTitle" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ParentCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreationTS" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModdifiedbyUserId" Type="Int32" Nullable="false" />
+          <Property Name="LastModdifiedTS" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Certification">
+          <Key>
+            <PropertyRef Name="CertificationId" />
+          </Key>
+          <Property Name="CertificationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CertificationCode" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CertificationTitle" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CertificationCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreationTS" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModdifiedbyUserId" Type="Int32" Nullable="false" />
+          <Property Name="LastModdifiedTS" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmployeeID" />
+          </Key>
+          <Property Name="EmployeeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmployeeCode" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DesignationId" Type="Int32" Nullable="false" />
+          <Property Name="CertificationCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="EmployeeBand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMailId" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ProfilePhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="IsApprover" Type="Boolean" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreationTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModifiedbyUserId" Type="Int32" Nullable="false" />
+          <Property Name="LastModifiedTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IsAdmin" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="UserDetail">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmployeeId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreationTS" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModdifiedbyUserId" Type="Int32" Nullable="false" />
+          <Property Name="LastModdifiedTS" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="CertificationRequest">
+          <Key>
+            <PropertyRef Name="RequestId" />
+          </Key>
+          <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="RequestByUserId" Type="Int32" Nullable="false" />
+          <Property Name="RequestForCertificationId" Type="Int32" Nullable="false" />
+          <Property Name="Remarks" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedByUserId" Type="Int32" Nullable="false" />
+          <Property Name="CreationTS" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastModdifiedbyUserId" Type="Int32" Nullable="false" />
+          <Property Name="LastModdifiedTS" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="amount" Type="Int32" />
+          <Property Name="IRA" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="quarter" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="CertificationCategory" Type="Int32" />
+          <Property Name="RequestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ApproverRemarks" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Status" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="trackerModelStoreContainer" CdmEntityContainer="trackerEntities">
+          <EntitySetMapping Name="Designations">
+            <EntityTypeMapping TypeName="trackerModel.Designation">
+              <MappingFragment StoreEntitySet="Designations">
+                <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+                <ScalarProperty Name="DesignationTitle" ColumnName="DesignationTitle" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CreationTimeStamp" ColumnName="CreationTimeStamp" />
+                <ScalarProperty Name="LastModdifiedbyUserId" ColumnName="LastModdifiedbyUserId" />
+                <ScalarProperty Name="LastModdifiedTimeStamp" ColumnName="LastModdifiedTimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CertificationCategories">
+            <EntityTypeMapping TypeName="trackerModel.CertificationCategory">
+              <MappingFragment StoreEntitySet="CertificationCategories">
+                <ScalarProperty Name="LastModdifiedTS" ColumnName="LastModdifiedTS" />
+                <ScalarProperty Name="LastModdifiedbyUserId" ColumnName="LastModdifiedbyUserId" />
+                <ScalarProperty Name="CreationTS" ColumnName="CreationTS" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+                <ScalarProperty Name="CertificationCategoryTitle" ColumnName="CertificationCategoryTitle" />
+                <ScalarProperty Name="CertificationCategoryId" ColumnName="CertificationCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Certifications">
+            <EntityTypeMapping TypeName="trackerModel.Certification">
+              <MappingFragment StoreEntitySet="Certifications">
+                <ScalarProperty Name="LastModdifiedTS" ColumnName="LastModdifiedTS" />
+                <ScalarProperty Name="LastModdifiedbyUserId" ColumnName="LastModdifiedbyUserId" />
+                <ScalarProperty Name="CreationTS" ColumnName="CreationTS" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="CertificationCategoryId" ColumnName="CertificationCategoryId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CertificationTitle" ColumnName="CertificationTitle" />
+                <ScalarProperty Name="CertificationCode" ColumnName="CertificationCode" />
+                <ScalarProperty Name="CertificationId" ColumnName="CertificationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="trackerModel.Employee">
+              <MappingFragment StoreEntitySet="Employees">
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="LastModifiedTimeStamp" ColumnName="LastModifiedTimeStamp" />
+                <ScalarProperty Name="LastModifiedbyUserId" ColumnName="LastModifiedbyUserId" />
+                <ScalarProperty Name="CreationTimeStamp" ColumnName="CreationTimeStamp" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="IsApprover" ColumnName="IsApprover" />
+                <ScalarProperty Name="ProfilePhoto" ColumnName="ProfilePhoto" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+                <ScalarProperty Name="EmployeeBand" ColumnName="EmployeeBand" />
+                <ScalarProperty Name="CertificationCategoryId" ColumnName="CertificationCategoryId" />
+                <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserDetails">
+            <EntityTypeMapping TypeName="trackerModel.UserDetail">
+              <MappingFragment StoreEntitySet="UserDetails">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="LastModdifiedTS" ColumnName="LastModdifiedTS" />
+                <ScalarProperty Name="LastModdifiedbyUserId" ColumnName="LastModdifiedbyUserId" />
+                <ScalarProperty Name="CreationTS" ColumnName="CreationTS" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CertificationRequests">
+            <EntityTypeMapping TypeName="trackerModel.CertificationRequest">
+              <MappingFragment StoreEntitySet="CertificationRequests">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="ApproverRemarks" ColumnName="ApproverRemarks" />
+                <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+                <ScalarProperty Name="CertificationCategory" ColumnName="CertificationCategory" />
+                <ScalarProperty Name="quarter" ColumnName="quarter" />
+                <ScalarProperty Name="IRA" ColumnName="IRA" />
+                <ScalarProperty Name="amount" ColumnName="amount" />
+                <ScalarProperty Name="LastModdifiedTS" ColumnName="LastModdifiedTS" />
+                <ScalarProperty Name="LastModdifiedbyUserId" ColumnName="LastModdifiedbyUserId" />
+                <ScalarProperty Name="CreationTS" ColumnName="CreationTS" />
+                <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="RequestForCertificationId" ColumnName="RequestForCertificationId" />
+                <ScalarProperty Name="RequestByUserId" ColumnName="RequestByUserId" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

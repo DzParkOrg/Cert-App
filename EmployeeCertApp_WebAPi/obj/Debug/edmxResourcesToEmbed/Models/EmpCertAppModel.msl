@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="trackerModelStoreContainer" CdmEntityContainer="trackerEntities">
+    <EntitySetMapping Name="Designations">
+      <EntityTypeMapping TypeName="trackerModel.Designation">
+        <MappingFragment StoreEntitySet="Designations">
+          <ScalarProperty Name="DesignationID" ColumnName="DesignationID" />
+          <ScalarProperty Name="DesignationTitle" ColumnName="DesignationTitle" />
+          <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+          <ScalarProperty Name="CreationTimeStamp" ColumnName="CreationTimeStamp" />
+          <ScalarProperty Name="LastModdifiedbyUserId" ColumnName="LastModdifiedbyUserId" />
+          <ScalarProperty Name="LastModdifiedTimeStamp" ColumnName="LastModdifiedTimeStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CertificationCategories">
+      <EntityTypeMapping TypeName="trackerModel.CertificationCategory">
+        <MappingFragment StoreEntitySet="CertificationCategories">
+          <ScalarProperty Name="LastModdifiedTS" ColumnName="LastModdifiedTS" />
+          <ScalarProperty Name="LastModdifiedbyUserId" ColumnName="LastModdifiedbyUserId" />
+          <ScalarProperty Name="CreationTS" ColumnName="CreationTS" />
+          <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+          <ScalarProperty Name="ParentCategoryId" ColumnName="ParentCategoryId" />
+          <ScalarProperty Name="CertificationCategoryTitle" ColumnName="CertificationCategoryTitle" />
+          <ScalarProperty Name="CertificationCategoryId" ColumnName="CertificationCategoryId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Certifications">
+      <EntityTypeMapping TypeName="trackerModel.Certification">
+        <MappingFragment StoreEntitySet="Certifications">
+          <ScalarProperty Name="LastModdifiedTS" ColumnName="LastModdifiedTS" />
+          <ScalarProperty Name="LastModdifiedbyUserId" ColumnName="LastModdifiedbyUserId" />
+          <ScalarProperty Name="CreationTS" ColumnName="CreationTS" />
+          <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+          <ScalarProperty Name="CertificationCategoryId" ColumnName="CertificationCategoryId" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="CertificationTitle" ColumnName="CertificationTitle" />
+          <ScalarProperty Name="CertificationCode" ColumnName="CertificationCode" />
+          <ScalarProperty Name="CertificationId" ColumnName="CertificationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="trackerModel.Employee">
+        <MappingFragment StoreEntitySet="Employees">
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="LastModifiedTimeStamp" ColumnName="LastModifiedTimeStamp" />
+          <ScalarProperty Name="LastModifiedbyUserId" ColumnName="LastModifiedbyUserId" />
+          <ScalarProperty Name="CreationTimeStamp" ColumnName="CreationTimeStamp" />
+          <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+          <ScalarProperty Name="IsApprover" ColumnName="IsApprover" />
+          <ScalarProperty Name="ProfilePhoto" ColumnName="ProfilePhoto" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="EMailId" ColumnName="EMailId" />
+          <ScalarProperty Name="EmployeeBand" ColumnName="EmployeeBand" />
+          <ScalarProperty Name="CertificationCategoryId" ColumnName="CertificationCategoryId" />
+          <ScalarProperty Name="DesignationId" ColumnName="DesignationId" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="EmployeeCode" ColumnName="EmployeeCode" />
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserDetails">
+      <EntityTypeMapping TypeName="trackerModel.UserDetail">
+        <MappingFragment StoreEntitySet="UserDetails">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="LastModdifiedTS" ColumnName="LastModdifiedTS" />
+          <ScalarProperty Name="LastModdifiedbyUserId" ColumnName="LastModdifiedbyUserId" />
+          <ScalarProperty Name="CreationTS" ColumnName="CreationTS" />
+          <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+          <ScalarProperty Name="EmployeeId" ColumnName="EmployeeId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CertificationRequests">
+      <EntityTypeMapping TypeName="trackerModel.CertificationRequest">
+        <MappingFragment StoreEntitySet="CertificationRequests">
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="ApproverRemarks" ColumnName="ApproverRemarks" />
+          <ScalarProperty Name="RequestId" ColumnName="RequestId" />
+          <ScalarProperty Name="CertificationCategory" ColumnName="CertificationCategory" />
+          <ScalarProperty Name="quarter" ColumnName="quarter" />
+          <ScalarProperty Name="IRA" ColumnName="IRA" />
+          <ScalarProperty Name="amount" ColumnName="amount" />
+          <ScalarProperty Name="LastModdifiedTS" ColumnName="LastModdifiedTS" />
+          <ScalarProperty Name="LastModdifiedbyUserId" ColumnName="LastModdifiedbyUserId" />
+          <ScalarProperty Name="CreationTS" ColumnName="CreationTS" />
+          <ScalarProperty Name="CreatedByUserId" ColumnName="CreatedByUserId" />
+          <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+          <ScalarProperty Name="RequestForCertificationId" ColumnName="RequestForCertificationId" />
+          <ScalarProperty Name="RequestByUserId" ColumnName="RequestByUserId" />
+          <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

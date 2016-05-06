@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title></title>
+        <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+        <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="../DesignationController.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+<body ng-app="designation" ng-controller="designationCtrl">
+    <div class="w3-container w3-blue">
+        <h2>Designation Master</h2>
+    </div>
+
+    <form class="w3-container">
+        <p>
+            <label>Designation Name</label>
+            <br />
+            <input type="text" class="w3-bordered" ng-model="designationName">
+        </p>
+        <p>
+            <input type="checkbox" class="w3-text" ng-model="isActive"> Active
+        </p>
+        <p>
+            <button class="w3-btn w3-green w3-ripple" ng-click="add()" ng-disabled="saveDisabled">&#10004; Save</button>
+            <button class="w3-btn w3-green w3-ripple" ng-click="edit()" ng-disabled="modificationDisabled">&#9998;Update</button>
+            <button class="w3-btn w3-green w3-ripple" ng-click="delete($index)" ng-disabled="modificationDisabled">&#9998;Delete</button>
+            <button class="w3-btn w3-orange w3-ripple" ng-click="clear()">Clear</button>
+        </p>
+    </form>
+    <table class="w3-table w3-bordered w3-striped w3-border">
+        <thead class="w3-red">
+            <tr>
+                <th>Select</th>
+                <th>Designation Name</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tr ng-repeat="designation in designations">
+            <td>
+                <button class="w3-btn w3-orange w3-ripple" ng-click="select($index)">&#10004; Select</button>
+            </td>
+            <td>
+                {{ designation.id}}
+            </td>
+            <td>{{ designation.designationName }}</td>
+            <td>{{ designation.isActive }}</td>
+        </tr>
+    </table>
+</body>
+</html>

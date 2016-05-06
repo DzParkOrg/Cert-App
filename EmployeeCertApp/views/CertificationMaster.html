@@ -1,0 +1,80 @@
+﻿
+   
+    
+   <nav-menu>
+</nav-menu>
+   
+
+    <div class="w3-container w3-amber">
+        <h2>Certification Categories</h2>
+    </div>
+    <div class="w3-container">
+        <form name="frmCertificationMaster" novalidate>
+            <p>
+                <label class="w3-text w3-border w3-pink">{{ErrMsg}}</label>
+            </p>
+            <p>
+                <label>Select Certification Category</label>
+                <br />
+                <select name="certCategory" ng-model="certification.CertificationCategoryId" ng-options="category.CertificationCategoryId as category.CertificationCategoryTitle for category in categories" 
+                        ng-class="{error: frmCertificationMaster.certCategory}"></select>
+            </p>
+            <p>
+                <label>Certification Code</label>
+                <br />
+                <input type="text" name="certCode" class="w3-bordered" ng-class="{error: frmCertificationMaster.certCode.$invalid}" ng-model="certification.CertificationCode" 
+                       required>
+            </p>
+            <p>
+                <label>Certification Title</label>
+                <br />
+                <input type="text" name="certTitle" class="w3-bordered" ng-class="{error: frmCertificationMaster.certTitle.$invalid}" ng-model="certification.CertificationTitle" required>
+            </p>
+            <p>
+                <label>Description</label>
+                <br />
+                <textarea class="w3-bordered" name="certDesc" ng-class="{error: frmCertificationMaster.certDesc.$invalid}"  required ng-model="certification.Description"></textarea>
+            </p>
+            <p>
+                <button class="w3-btn w3-green w3-ripple" ng-click="add()" ng-disabled="saveDisabled">&#10004; Save Changes</button>
+                <button class="w3-btn w3-orange w3-ripple" ng-click="clear()">Clear</button>
+            </p>
+        </form>
+    </div>
+    <div class="w3-container">
+        <table class="w3-table w3-bordered w3-striped">
+            <thead class="w3-border w3-green">
+                <tr>
+                    <th>Select</th>
+                    <th>Certification Id</th>
+                    <th>Certification Category</th>
+                    <th>Certification Code</th>
+                    <th>Certification Title</th>
+                    <th>Certification Description</th>
+                </tr>
+            </thead>
+            <tr ng-repeat="certification in certifications">
+                <td>
+                    <button class="w3-btn w3-black w3-ripple" ng-click="select($index)" ng-disabled="modificationDisabled">&#9998;Select to Edit</button>
+                </td>
+                <td>
+                    {{certification.CertificationId}}
+                </td>
+                <td>
+                    {{certification.CertificationCategoryId}}
+                </td>
+                <td>
+                    {{certification.CertificationCode}}
+                </td>
+                <td>
+                    {{certification.CertificationTitle}}
+                </td>
+
+                <td>
+                    {{certification.Description}}
+                </td>
+            </tr>
+        </table>
+    </div>
+
+

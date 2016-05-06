@@ -1,0 +1,147 @@
+﻿<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="headerText form-group">Sign Up</h3>
+    </div>
+    <div class="panel-body">
+        <form name="registrationForm" role="form" class="form-horizontal" novalidate>
+            <div class="form-group ">
+                <div data-ng-show="message" class="alert alert-danger">
+                    {{ message }}
+                </div>
+                <div data-ng-show="successMessage" class="alert alert-success">
+                    {{ successMessage }}
+                </div>
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-7">
+                    <label for="empCode">
+                        Employee Code
+                        <red-span>*</red-span>
+                    </label>
+                    <div class="input-group add-on">
+                        <input type="text" class="form-control" ng-model="employeeCode" placeholder="employee code" name="empCode" id="empCode" autofocus required ng-class="{error : registrationForm.empCode.$invalid && message }">
+                        <div class="input-group-btn">
+                            <input type="button" class="btn btn-default" value="Search" data-ng-click="getEmployeeDetails()" />
+                            <span class="glyphicon glyphicon-search"> ></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--<span class="alert alert-danger" ng-show="registrationForm.srchCode.$touched && registrationForm.srchCode.$invalid">employe code is required.</span>-->
+
+            <div ng-show="employee">
+                <div class="col col-xs-12">
+                    <div class="col-xs-5">
+                        <div class="col-md-7">
+                            <table>
+                                <tr class="form-group">
+                                    <td>
+                                        <label>Name</label>
+                                    </td>
+
+                                    <td>
+                                        <span class="paddingRight">{{employee .FirstName}} {{employee .MiddleName}} {{employee .LastName}}</span>
+                                    </td>
+                                </tr>
+
+                                <tr class="form-group">
+                                    <td>
+                                        <label>Email</label>
+                                    </td>
+                                    <td>
+                                        <span class="paddingRight">{{employee .EMailId}}</span>
+                                    </td>
+                                </tr>
+
+                                <tr class="form-group">
+                                    <td>
+                                        <label>Designation</label>
+                                    </td>
+                                    <td>
+                                        <span class="paddingRight">{{designationTitle}}</span>
+                                    </td>
+                                </tr>
+
+                                <tr class="form-group">
+                                    <td>
+                                        <label>Band</label>
+                                    </td>
+                                    <td>
+                                        <span class="paddingRight">{{employee.EmployeeBand}}</span>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <!--<div class="col col-xs-12">-->
+                    <!--<div class="col-xs-6">-->
+                    <!-- <div class="col-md-7">
+                         <div class="form-group">
+                             <label>Name</label>
+                             <span class="paddingRight">{{employee .FirstName}} {{employee .MiddleName}} {{employee .LastName}}</span>
+                         </div>
+                         <div class="form-group">
+                             <label>Email</label>
+
+                             <span class="paddingRight">{{employee .EMailId}}</span>
+                         </div>
+                         <div class="form-group">
+                             <label>Designation</label> {{designationTitle}} DesignationId
+                         </div>
+                         <div class="form-group">
+                             <label>Band</label>
+                             <span class="paddingRight">{{employee.EmployeeBand}}</span>
+                         </div>
+                     </div>-->
+                    <!--</div>-->
+                    <div class="col col-xs-6">
+                        <img align="left" id="profilePhoto" src="css/images/profile.png" width="100px" height="150px" style="padding-bottom:5%;">
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+                <div class="col-md-7">
+                    <label for="loginName">
+                        Login Name
+                        <red-span>*</red-span>
+                    </label>
+                    <input type="text" name="loginName" id="loginName" class="form-control" required data-ng-disabled="disableIndicator" data-ng-model="userDetail.loginName" ng-class="{error : registrationForm.loginName.$invalid && registrationForm.$submitted }" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <label for="password">
+                        Password
+                        <red-span>*</red-span>
+                    </label>
+                    <input type="password" name="password" required ng-model="userDetail.password" class="form-control" data-ng-disabled="disableIndicator" ng-class="{error : registrationForm.password.$invalid && registrationForm.$submitted }" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <label>
+                        Confirm Password
+                        <red-span>*</red-span>
+                    </label>
+
+                    <input type="password" name="cnfrmPass" required ng-model="cnfrmPass" class="form-control" data-ng-disabled="disableIndicator" ng-class="{error : registrationForm.cnfrmPass.$invalid && registrationForm.$submitted }" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-7">
+                    <input data-ng-disabled="disableIndicator" type="submit" class="btn btn-primary" value="Register" data-ng-click="onRegister()" />
+                    <input type="button" class="btn btn-warning" value="Cancel" data-ng-click="onCancel();" />
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="panel-footer">
+        <span style="color: white">© Copyright 2015. Diaspark Infotech Pvt. Ltd.</span>
+    </div>
+</div>

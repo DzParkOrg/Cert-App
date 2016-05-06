@@ -1,0 +1,163 @@
+﻿<nav-menu>
+</nav-menu>
+
+<div class="container-fluid well span6 modal-body">
+    <div class="row-fluid">
+        <form name="employeeMasterForm" role="form" class="form-horizontal" novalidate ng-submit="sendDetails()">
+            <div class="form-group col-xs-8">
+                <div data-ng-show="message" class="alert alert-danger">
+                    {{ message }}
+                </div>
+                <div data-ng-show="successmessage" class="alert alert-success">
+                    {{ successmessage }}
+                </div>
+            </div>
+
+            <div class="span8">
+                <div class="form-group col-xs-8">
+                    <label>
+                        First Name
+                        <red-span>*</red-span>
+                    </label>
+                    <input type="text" name="fName" class="form-control" autofocus id="fName" data-ng-model="empMaster.FirstName" required ng-class="{error : employeeMasterForm.fName.$invalid && employeeMasterForm.$submitted }" />
+                </div>
+
+                <div class="form-group col-xs-8">
+                    <label>
+                        Middle Name
+                    </label>
+                    <input type="text" name="mName" class="form-control" id="mName" data-ng-model="empMaster.MiddleName" />
+                </div>
+
+                <div class="form-group col-xs-8">
+                    <label>
+                        Last Name
+                        <red-span>*</red-span>
+                    </label>
+                    <input type="text" name="lName" class="form-control" id="lName" data-ng-model="empMaster.LastName" required ng-class="{error : employeeMasterForm.lName.$invalid && employeeMasterForm.$submitted }" />
+                </div>
+
+
+                <div class="form-group col-xs-8">
+                    <label>
+                        Employee Code
+                        <red-span>*</red-span>
+                    </label>
+                    <br>
+                    <input type="text" class="form-control" name="empCode" id="empCode" data-ng-model="empMaster.EmployeeCode" required ng-pattern="/^[a-zA-Z0-9]+$/" ng-class="{error : employeeMasterForm.empCode.$invalid && employeeMasterForm.$submitted }">
+                    <span style="color:red" ng-show="!employeeMasterForm.empCode.$error.required && employeeMasterForm.empCode.$dirty && employeeMasterForm.empCode.$invalid">no special symbols allowed</span>
+                </div>
+
+                <div class="form-group col-xs-8">
+                    <label>
+                        Designation
+                        <red-span>*</red-span>
+                    </label>
+                    <div>
+                        <select class="form-control" name="designation" id="designation" required ng-options="item.DesignationID as item.DesignationTitle for item in designationOptions" data-ng-model="empMaster.DesignationId" ng-class="{error : employeeMasterForm.designation.$invalid && employeeMasterForm.$submitted }">
+                            <option value="">--Select--</option>
+                            <!-- <option ng-repeat="option in designationOptions" value="option.DesignationID">
+                                    {{option.DesignationTitle}}
+                                </option>-->
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group col-xs-8">
+                    <label>
+                        Employee Band
+                        <red-span>*</red-span>
+                    </label>
+                    <div>
+                        <select class="form-control" name="empBand" id="empBand" data-ng-model="empMaster.EmployeeBand" required ng-class="{error : employeeMasterForm.empBand.$invalid && employeeMasterForm.$submitted }">
+                            <option value="">--Select--</option>
+                            <option value="L1">L1</option>
+                            <option value="L2">L2</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="form-group col-xs-8">
+
+                    <label>
+                        Technology
+                        <red-span>*</red-span>
+                    </label>
+                    <div>
+                        <select class="form-control" name="techCategory" id="techCategory" required ng-options="item.CertificationCategoryId as item.CertificationCategoryTitle for item in technologyOption" data-ng-model="empMaster.CertificationCategoryId" ng-class="{error : employeeMasterForm.techCategory.$invalid && employeeMasterForm.$submitted }">
+                            <option value="">--Select--</option>
+
+                            <!--<option ng-repeat="option in technologyOption" value="option.CertificationCategoryId">
+                                    {{option.CertificationCategoryTitle }}
+                                </option>-->
+                        </select>
+                    </div>
+
+                </div>
+
+
+                <div class="form-group col-xs-8">
+                    <label>
+                        Email
+                        <red-span>*</red-span>
+                    </label>
+                    <input type="email" class="form-control" name="emailId" id="emailId" ng-model="empMaster.EMailId" required ng-class="{error : employeeMasterForm.emailId.$invalid && employeeMasterForm.$submitted }" />
+
+                    <span style="color:red" ng-show="!employeeMasterForm.emailId.$error.required && employeeMasterForm.emailId.$error.email && employeeMasterForm.emailId.$dirty">invalid email</span>
+                </div>
+
+                <div class="form-group col-xs-8">
+                    <label>
+                        Mobile Number
+                        <red-span>*</red-span>
+                    </label>
+                    <!-- ^\d{4}-\d{3}-\d{4}$-->
+                    <input type="tel" maxlength="10" ng-minlength="10" ng-maxlength="10" class="form-control" name="mobileNo" id="mobileNo" ng-model="empMaster.MobileNo" required ng-pattern="/(7|8|9)\d{9}/" ng-class="{error :  employeeMasterForm.mobileNo.$invalid  && employeeMasterForm.$submitted }" />
+                    <span style="color:red" ng-show="((employeeMasterForm.mobileNo.$error.minlength || employeeMasterForm.mobileNo.$error.maxlength) && employeeMasterForm.mobileNo.$dirty) ">phone number should be 10 digits</span>
+                </div>
+
+
+                <div class="form-group col-xs-8">
+                    <label>
+                        <input name="isApprover" id="isApprover" data-ng-model="empMaster.IsApprover" type="checkbox" value={{empmaster.isapprover}}> Approver
+                    </label>
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>
+                        <input name="isAdmin" id="isAdmin" data-ng-model="empMaster.IsAdmin" type="checkbox" value={{empmaster.isAdmin}}> Admin
+                    </label>
+                </div>
+
+            </div>
+
+            <div class="span2 form-group">
+                <br />
+
+                <label>
+                    <img ng-show="imageIndicator || image2" ng-src="{{image2.resized.dataURL}}" alt="profilePic" name="profilePhoto" id="profilePhoto" align="right" width="150px" height="150px" class="img-thumbnail img-responsive">
+
+                    <div class="image-upload">
+                        <label for="file-input">
+                            <label for="inputImage2">Image</label>
+                            <input id="inputImage2" type="file" accept="image/*" image="image2" resize-max-height="200" resize-max-width="250" resize-quality="0.5" ng-model="empMaster.ProfilePhoto" />
+                            <hr />
+                        </label>
+                    </div>
+                </label>
+                <input type="button" value="Clear image" data-ng-click="clearImage();" style="align:left" />
+            </div>
+
+            <div class="form-group col-xs-8">
+
+                <input type="submit" class="btn btn-primary" value="Save" />
+                <div class="divider"></div>
+                <input type="button" class="btn btn-warning" value="Cancel" data-ng-click="cancel();" />
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<div class="panel-footer">
+    <span style="color: white">© Copyright 2015. Diaspark Infotech Pvt. Ltd.</span>
+</div>
